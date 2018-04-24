@@ -16,4 +16,6 @@ private:
 
 	RenderWindow* window;
 
+	Sprite* sprite;
+
 };

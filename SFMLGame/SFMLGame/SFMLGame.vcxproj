@@ -97,7 +97,9 @@
       <AdditionalDependencies>sfml-window-d.lib;sfml-system-d.lib;sfml-audio-d.lib;sfml-graphics-d.lib;sfml-main-d.lib;flac.lib;freetype.lib;jpeg.lib;ogg.lib;openal32.lib;vorbis.lib;vorbisenc.lib;vorbisfile.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>copy "$(SolutionDir)dll86" "$(OutDir)"</Command>
+      <Command>copy "$(SolutionDir)dll86" "$(OutDir)"
+mkdir "$(OutDir)Assets"
+copy "$(ProjectDir)Assets" "$(OutDir)Assets"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -116,7 +118,9 @@
       <AdditionalDependencies>sfml-window-d.lib;sfml-system-d.lib;sfml-audio-d.lib;sfml-graphics-d.lib;sfml-main-d.lib;flac.lib;freetype.lib;jpeg.lib;ogg.lib;openal32.lib;vorbis.lib;vorbisenc.lib;vorbisfile.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>copy "$(SolutionDir)dll64" "$(OutDir)"</Command>
+      <Command>copy "$(SolutionDir)dll64" "$(OutDir)"
+mkdir "$(OutDir)Assets"
+copy "$(ProjectDir)Assets" "$(OutDir)Assets"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -139,7 +143,9 @@
       <AdditionalDependencies>sfml-graphics-s.lib;sfml-window-s.lib;sfml-system-s.lib;sfml-main.lib;sfml-audio-s.lib;flac.lib;freetype.lib;jpeg.lib;ogg.lib;openal32.lib;vorbis.lib;vorbisenc.lib;vorbisfile.lib;opengl32.lib;winmm.lib;gdi32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>copy "$(SolutionDir)dll86\openal32.dll" "$(OutDir)"</Command>
+      <Command>copy "$(SolutionDir)dll86\openal32.dll" "$(OutDir)"
+mkdir "$(OutDir)Assets"
+copy "$(ProjectDir)Assets" "$(OutDir)Assets"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -162,7 +168,9 @@
       <AdditionalDependencies>sfml-window-s.lib;sfml-system-s.lib;sfml-main.lib;sfml-graphics-s.lib;sfml-audio-s.lib;flac.lib;freetype.lib;jpeg.lib;ogg.lib;openal32.lib;vorbis.lib;vorbisenc.lib;vorbisfile.lib;opengl32.lib;winmm.lib;gdi32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>copy "$(SolutionDir)dll64\openal32.dll" "$(OutDir)"</Command>
+      <Command>copy "$(SolutionDir)dll64\openal32.dll" "$(OutDir)"
+mkdir "$(OutDir)Assets"
+copy "$(ProjectDir)Assets" "$(OutDir)Assets"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
