@@ -1,8 +1,8 @@
-#include "Game.h"
+#include "SAMGame.h"
 
 int main()
 {
-	Game* game = new Game();
+	SAMGame* game = new SAMGame();
 
 	game->Loop();
 
