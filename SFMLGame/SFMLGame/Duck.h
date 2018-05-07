@@ -15,12 +15,14 @@ public:
 	void Deactivate();
 	void OnMouseDown();
 
+	static float velocity;
+
 private:
 
 	float xBegin;
 	float yBegin;
 
-	static float velocity;
+	
 
 	static string texturePath;
 };

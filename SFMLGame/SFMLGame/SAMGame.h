@@ -32,10 +32,16 @@ private:
 	Sprite background;
 
 	Font* textFont;
-	Text score;
 
-	float timerTop = 2;
+	Text score;
+	Text timerText;
+	Text conditionText;
+
+	float duckTimerTop = 2;
+	float duckTimerBottom = 0.5;
 	float duckTimer = 0;
+
+	float gameTimer = 10;
 
 	static int duckCounter;
 

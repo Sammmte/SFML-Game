@@ -30,6 +30,18 @@ SAMGame::SAMGame()
 	score.setCharacterSize(30);
 	score.setColor(Color::Red);
 
+	timerText.setPosition(700, 10);
+	timerText.setFont(*textFont);
+	timerText.setString(to_string(gameTimer));
+	timerText.setCharacterSize(30);
+	timerText.setColor(Color::Red);
+
+	conditionText.setPosition(30, 0);
+	conditionText.setFont(*textFont);
+	conditionText.setString("Mata a 20 patos antes de que termine el tiempo");
+	conditionText.setCharacterSize(30);
+	conditionText.setColor(Color::Red);
+
 	instance = this;
 }
 
@@ -53,6 +65,20 @@ void SAMGame::Loop()
 	{
 		UpdateTime();
 
+		if (gameTimer < 0)
+		{
+			timerText.setString("0.00");
+
+			if (duckCounter < 20)
+			{
+				conditionText.setString("PERDISTE");
+			}
+			else
+			{
+				conditionText.setString("GANASTE");
+			}
+		}
+
 		Event event;
 		while (window->pollEvent(event))
 		{
@@ -62,26 +88,32 @@ void SAMGame::Loop()
 			}
 		}
 
-		if (Mouse::isButtonPressed(Mouse::Button::Left))
+		if (gameTimer > 0)
 		{
-			for (list<SAMGameEntity*>::iterator iterator = entities.begin(); iterator != entities.end(); ++iterator)
+			gameTimer -= GetElapsedTime().asSeconds();
+			timerText.setString(to_string(gameTimer));
+
+			if (Mouse::isButtonPressed(Mouse::Button::Left))
 			{
-				if ((*iterator)->active == true)
+				for (list<SAMGameEntity*>::iterator iterator = entities.begin(); iterator != entities.end(); ++iterator)
 				{
-					(*iterator)->DoOnPointerOverObject(Mouse::getPosition(*window));
+					if ((*iterator)->active == true)
+					{
+						(*iterator)->DoOnPointerOverObject(Mouse::getPosition(*window));
+					}
 				}
 			}
-		}
 
-		if (duckTimer >= timerTop)
-		{
-			ActivateDuck();
+			if (duckTimer >= duckTimerTop)
+			{
+				ActivateDuck();
 
-			duckTimer = 0;
-		}
-		else
-		{
-			duckTimer += GetElapsedTime().asSeconds();
+				duckTimer = 0;
+			}
+			else
+			{
+				duckTimer += GetElapsedTime().asSeconds();
+			}
 		}
 
 
@@ -89,6 +121,8 @@ void SAMGame::Loop()
 		
 		window->draw(background);
 		window->draw(score);
+		window->draw(timerText);
+		window->draw(conditionText);
 
 		for (list<SAMGameEntity*>::iterator iterator = entities.begin(); iterator != entities.end(); ++iterator)
 		{
@@ -134,5 +168,12 @@ SAMGame* SAMGame::GetInstance()
 void SAMGame::CounterUp()
 {
 	duckCounter++;
+	Duck::velocity += 100;
+
+	if (duckTimerTop > duckTimerBottom)
+	{
+		duckTimerTop -= 0.2;
+	}
+
 	score.setString(to_string(duckCounter));
 }
