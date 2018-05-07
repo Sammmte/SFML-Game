@@ -14,6 +14,7 @@ public:
 	~SAMGameEntity();
 
 	Sprite* sprite;
+	Texture texture;
 	bool active;
 
 	Vector2f GetPosition();

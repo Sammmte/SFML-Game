@@ -7,10 +7,9 @@ SAMGameEntity::SAMGameEntity(string texturePath, float xIni, float yIni) : SAMGa
 
 SAMGameEntity::SAMGameEntity(string texturePath)
 {
-	Texture* texture = new Texture();
-	texture->loadFromFile(texturePath);
+	texture.loadFromFile(texturePath);
 
-	sprite = new Sprite(*texture);
+	sprite = new Sprite(texture);
 
 	active = false;
 }

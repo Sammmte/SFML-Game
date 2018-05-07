@@ -18,22 +18,35 @@ public:
 
 	Time GetElapsedTime();
 
-private:
+	static SAMGame* GetInstance();
 
-	
+	void CounterUp();
+
+private:
 
 	RenderWindow* window;
 
 	list<SAMGameEntity*> entities;
 
+	Texture bg;
+	Sprite background;
+
+	Font* textFont;
+	Text score;
+
 	float timerTop = 2;
 	float duckTimer = 0;
+
+	static int duckCounter;
 
 	Time elapsedTime;
 
 	Clock clock;
 
+	
 	void UpdateTime();
 
 	void ActivateDuck();
+
+	static SAMGame* instance;
 };

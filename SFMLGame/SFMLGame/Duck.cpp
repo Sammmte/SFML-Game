@@ -1,5 +1,6 @@
 #include "Duck.h"
 #include <iostream>
+#include "SAMGame.h"
 
 string Duck::texturePath = "Assets/duck.png";
 float Duck::velocity = 300;
@@ -41,5 +42,6 @@ void Duck::Update(float elapsedTime)
 
 void Duck::OnMouseDown()
 {
+	SAMGame::GetInstance()->CounterUp();
 	Deactivate();
 }
