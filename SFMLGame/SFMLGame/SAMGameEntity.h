@@ -9,14 +9,19 @@ class SAMGameEntity
 {
 public:
 
-	Sprite* sprite;
-
 	SAMGameEntity(string texturePath, float xIni, float yIni);
+	SAMGameEntity(string texturePath);
 	~SAMGameEntity();
+
+	Sprite* sprite;
+	bool active;
 
 	Vector2f GetPosition();
 
 	void Translate(Vector2f direction);
 
 	void virtual Update(float elapsedTime) = 0;
+
+	void virtual Activate() = 0;
+	void virtual Deactivate() = 0;
 };

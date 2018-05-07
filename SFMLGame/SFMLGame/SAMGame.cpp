@@ -1,19 +1,32 @@
 #include "SAMGame.h"
-#include "TestEntity.h"
+#include "Duck.h"
+#include <iostream>
 
 SAMGame::SAMGame()
 {
 	window = new RenderWindow(VideoMode(800, 600), "URUTIMEITO GEIMU");
+
+	for (int i = 0; i < 20; i++)
+	{
+		SAMGameEntity* entity = new Duck();
+
+		entities.push_back(entity);
+	}
 }
 
 SAMGame::~SAMGame()
 {
 	delete window;
+
+	while(entities.empty() == false)
+	{
+		delete entities.front();
+		entities.pop_front();
+	}
 }
 
 void SAMGame::Loop()
 {
-	TestEntity* testEntity = new TestEntity("Assets/img.png", 10, 10);
 
 	while (window->isOpen())
 	{
@@ -23,17 +36,36 @@ void SAMGame::Loop()
 		while (window->pollEvent(event))
 		{
 			if (event.type == Event::Closed)
+			{
 				window->close();
+			}
 		}
 
-		testEntity->Update(GetElapsedTime().asSeconds());
+		if (duckTimer >= timerTop)
+		{
+			ActivateDuck();
+
+			duckTimer = 0;
+		}
+		else
+		{
+			duckTimer += GetElapsedTime().asSeconds();
+		}
+
 
 		window->clear();
-		window->draw(*(testEntity->sprite));
+		
+		for (list<SAMGameEntity*>::iterator iterator = entities.begin(); iterator != entities.end(); ++iterator)
+		{
+			if ((*iterator)->active == true)
+			{
+				(*iterator)->Update(GetElapsedTime().asSeconds());
+				window->draw((*(*iterator)->sprite));
+			}
+		}
+
 		window->display();
 	}
-
-	delete testEntity;
 }
 
 Time SAMGame::GetElapsedTime()
@@ -44,4 +76,17 @@ Time SAMGame::GetElapsedTime()
 void SAMGame::UpdateTime()
 {
 	elapsedTime = clock.restart();
+}
+
+void SAMGame::ActivateDuck()
+{
+	for (list<SAMGameEntity*>::iterator iterator = entities.begin(); iterator != entities.end(); ++iterator)
+	{
+		if ((*iterator)->active == false)
+		{
+			(*iterator)->Activate();
+
+			break;
+		}
+	}
 }

@@ -1,13 +1,18 @@
 #include "SAMGameEntity.h"
 
-SAMGameEntity::SAMGameEntity(string texturePath, float xIni, float yIni)
+SAMGameEntity::SAMGameEntity(string texturePath, float xIni, float yIni) : SAMGameEntity(texturePath)
+{
+	sprite->setPosition(xIni, yIni);
+}
+
+SAMGameEntity::SAMGameEntity(string texturePath)
 {
 	Texture* texture = new Texture();
 	texture->loadFromFile(texturePath);
 
 	sprite = new Sprite(*texture);
 
-	sprite->setPosition(xIni, yIni);
+	active = false;
 }
 
 SAMGameEntity::~SAMGameEntity()

@@ -1,11 +1,11 @@
 #pragma once
 #include <SFML\Graphics.hpp>
+#include <list>
 
-#ifdef _DEBUG
-#include <iostream>
-#endif
+#include "SAMGameEntity.h"
 
 using namespace sf;
+using namespace std;
 
 class SAMGame
 {
@@ -20,11 +20,20 @@ public:
 
 private:
 
+	
+
 	RenderWindow* window;
+
+	list<SAMGameEntity*> entities;
+
+	const float timerTop = 4;
+	float duckTimer = 0;
 
 	Time elapsedTime;
 
 	Clock clock;
 
 	void UpdateTime();
+
+	void ActivateDuck();
 };

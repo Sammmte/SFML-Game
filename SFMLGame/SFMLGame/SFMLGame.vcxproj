@@ -174,15 +174,15 @@ copy "$(ProjectDir)Assets" "$(OutDir)Assets"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Duck.cpp" />
     <ClCompile Include="SAMGameEntity.cpp" />
     <ClCompile Include="SAMGame.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="TestEntity.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Duck.h" />
     <ClInclude Include="SAMGameEntity.h" />
     <ClInclude Include="SAMGame.h" />
-    <ClInclude Include="TestEntity.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

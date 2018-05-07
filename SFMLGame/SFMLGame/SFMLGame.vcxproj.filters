@@ -24,7 +24,7 @@
     <ClCompile Include="SAMGameEntity.cpp">
       <Filter>Archivos de código fuente</Filter>
     </ClCompile>
-    <ClCompile Include="TestEntity.cpp">
+    <ClCompile Include="Duck.cpp">
       <Filter>Archivos de código fuente</Filter>
     </ClCompile>
   </ItemGroup>
@@ -35,7 +35,7 @@
     <ClInclude Include="SAMGameEntity.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="TestEntity.h">
+    <ClInclude Include="Duck.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>
