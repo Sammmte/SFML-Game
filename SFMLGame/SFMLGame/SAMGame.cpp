@@ -42,6 +42,8 @@ SAMGame::SAMGame()
 	conditionText.setCharacterSize(30);
 	conditionText.setColor(Color::Red);
 
+	gameTimer = 15;
+
 	instance = this;
 }
 

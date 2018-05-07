@@ -41,7 +41,7 @@ private:
 	float duckTimerBottom = 0.5;
 	float duckTimer = 0;
 
-	float gameTimer = 10;
+	float gameTimer;
 
 	static int duckCounter;
 
