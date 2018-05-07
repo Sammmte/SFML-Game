@@ -24,4 +24,8 @@ public:
 
 	void virtual Activate() = 0;
 	void virtual Deactivate() = 0;
+
+	void DoOnPointerOverObject(Vector2i mousepos);
+
+	void virtual OnMouseDown() = 0;
 };

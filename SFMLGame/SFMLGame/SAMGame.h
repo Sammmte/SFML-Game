@@ -26,7 +26,7 @@ private:
 
 	list<SAMGameEntity*> entities;
 
-	const float timerTop = 4;
+	float timerTop = 2;
 	float duckTimer = 0;
 
 	Time elapsedTime;

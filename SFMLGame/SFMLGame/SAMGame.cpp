@@ -6,7 +6,7 @@ SAMGame::SAMGame()
 {
 	window = new RenderWindow(VideoMode(800, 600), "URUTIMEITO GEIMU");
 
-	for (int i = 0; i < 20; i++)
+	for (int i = 0; i < 5; i++)
 	{
 		SAMGameEntity* entity = new Duck();
 
@@ -38,6 +38,17 @@ void SAMGame::Loop()
 			if (event.type == Event::Closed)
 			{
 				window->close();
+			}
+		}
+
+		if (Mouse::isButtonPressed(Mouse::Button::Left))
+		{
+			for (list<SAMGameEntity*>::iterator iterator = entities.begin(); iterator != entities.end(); ++iterator)
+			{
+				if ((*iterator)->active == true)
+				{
+					(*iterator)->DoOnPointerOverObject(Mouse::getPosition(*window));
+				}
 			}
 		}
 

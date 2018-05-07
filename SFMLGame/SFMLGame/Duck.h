@@ -13,13 +13,14 @@ public:
 	void Update(float elapsedTime);
 	void Activate();
 	void Deactivate();
+	void OnMouseDown();
 
 private:
 
 	float xBegin;
 	float yBegin;
 
-	float velocity = 70;
+	static float velocity;
 
 	static string texturePath;
 };

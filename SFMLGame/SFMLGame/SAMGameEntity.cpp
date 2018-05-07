@@ -29,3 +29,13 @@ void SAMGameEntity::Translate(Vector2f direction)
 {
 	sprite->move(direction);
 }
+
+void SAMGameEntity::DoOnPointerOverObject(Vector2i mousepos)
+{
+	Vector2f auxPos = Vector2f(mousepos.x, mousepos.y);
+
+	if (sprite->getGlobalBounds().contains(auxPos))
+	{
+		OnMouseDown();
+	}
+}
